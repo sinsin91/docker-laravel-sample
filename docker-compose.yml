@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx.Dockerfile
+    ports:
+      - "8000:80"
+    networks:
+      - app_net
+  php:
+    build:
+      context: .
+      dockerfile: php.Dockerfile
+    networks:
+      - app_net
+
+networks:
+  app_net:
+    driver: bridge
